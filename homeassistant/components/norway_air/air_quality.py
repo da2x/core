@@ -59,7 +59,7 @@ async def async_setup_platform(
         _LOGGER.error("Latitude or longitude not set in Home Assistant config")
         return
 
-    coordinates = {"lat": str(latitude), "lon": str(longitude)}
+    coordinates = {"lat": str(round(float(latitude), 4)), "lon": str(round(float(longitude), 4))}
 
     async_add_entities(
         [AirSensor(name, coordinates, forecast, async_get_clientsession(hass))], True
